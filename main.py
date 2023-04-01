@@ -1,13 +1,14 @@
 from tkinter import *
 
 #-----------------functions-----------------
-
 """Resets the number of seconds. Starts the timer"""
+
+
 def start_timer():
 
   global seconds
   seconds = 60
-  global isPauseTimer 
+  global isPauseTimer
   isPauseTimer = False
   countdown()
 
@@ -41,14 +42,16 @@ def words_per_minute():
 def show_info():
   wordsperminute = Label(root, )
   accuracy = Label(root, )
-  time_taken = Label(root, )
+  time_taken = Label(root, text=seconds)
+
 
 def pause_timer():
   global isPauseTimer
   isPauseTimer = True
-  
- #---------------function ends-----------------
-  
+
+#---------------function ends-----------------
+
+
 #----------------Main menu starts here----------------
 
 # load window
