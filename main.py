@@ -1,6 +1,6 @@
 from tkinter import *
 
-#-----------------functions-----------------
+#-----------------functions for timer-----------------
 """Resets the number of seconds. Starts the timer"""
 
 
@@ -34,22 +34,40 @@ def countdown():
                       fg="white")
     timerbutton.config(state=NORMAL)
 
+#------------------- functions for timer ends ----------------------
+
+#----------------------- functions for information ---------------------------
+
+def number_of_words():
+  #get words from textbox
+  words = field.get()
+  words_counter = len(words.split())
+  total_num_of_words = Label(root, text="Number of words: " + str(words_counter), font=("bold","10"))
+  total_num_of_words.grid(row=8, column=0)
+  return words_counter
+
 
 def words_per_minute():
-  wpm = Label(root, )
+  word_counter = number_of_words()
 
+  #word_counter / time
+  wpm = word_counter / seconds * 60 
+  show_wpm = Label(root, text="Words per minute: " +str(round(wpm)), font=("bold","10"))
+  show_wpm.grid(row=9, column=0)
+  
 
-def show_info():
-  wordsperminute = Label(root, )
-  accuracy = Label(root, )
-  time_taken = Label(root, text=seconds)
+def timetaken():
+  time_taken = Label(root, text="Time taken: " +str(seconds) + " seconds", font=("bold","10"))
+  time_taken.grid(row=7, column=0)
 
 
 def pause_timer():
   global isPauseTimer
   isPauseTimer = True
 
-#---------------function ends-----------------
+#---------------------functions for information ends---------------------
+
+#---------------functions ends-----------------
 
 
 #----------------Main menu starts here----------------
@@ -84,7 +102,7 @@ submit_button = Button(
   root,
   text="submit",
   font=("bold", "10"),
-  command=lambda: [pause_timer(), show_info()])
+  command=lambda: [pause_timer(), number_of_words(),words_per_minute(), timetaken()])
 submit_button.grid(row=6, column=2)
 
 root.mainloop()
